@@ -1,0 +1,41 @@
+---
+title: "Untitled"
+author: "Ram Ghimire"
+output:
+   html_document
+
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(warning = FALSE,fig.width = 8)
+```
+# **Title**
+## _Section 1_
+Rmarkdown is used to create this report.
+
+```{r data_loading,message=FALSE,warning=FALSE}
+# Adding a comment
+library(tidyverse)
+gapminder <- read_csv("data/gapminder.csv")
+gapminder
+```
+
+## _Section 2_
+```{r data_manipulation}
+aust_gapminder <- filter(gapminder,country=="Australia",year>1980)
+aust_gapminder
+```
+We have `r nrow(aust_gapminder)` rows of Australian data
+
+## _Section 3_
+```{r data-plotting}
+ggplot(aust_gapminder,
+      mapping = aes(x=year,y=pop))+ geom_line()
+```
+
+
+```{r}
+getRversion()
+packageVersion("tidyverse")
+```
+[link to these notes](https://github.com/ram-ghimire/RMarkdown)
